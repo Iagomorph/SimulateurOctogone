@@ -3,10 +3,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class GestionCHR {
-    final static List<String> characters = new ArrayList<>();
+    final static List<Object> characters = new ArrayList<>();
+    final static List<String> charNames = new ArrayList<>();
 
-    public void addCharacters(String perso){
+    public void addCharacters(Object perso){
         characters.add(perso);
 
+
     }
+
+
 }
