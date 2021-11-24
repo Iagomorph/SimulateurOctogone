@@ -12,12 +12,12 @@ public class Proletarian {
 //        double result = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
 //        return result;
 //    }
-    private String name;
-    private int HP;
+    protected String name;
+    protected int HP;
     //Strength = damage
-    private int Strength;
+    protected int Strength;
     //Speed = initiative
-    private int speed;
+    protected int speed;
 
     Proletarian(String name, int HP, int Strength, int speed){
         this.name = name;
@@ -26,6 +26,7 @@ public class Proletarian {
         this.speed = speed;
 
     }
+
 
     public void takeDamages(int Dmg){
         this.HP = this.HP - Dmg;
