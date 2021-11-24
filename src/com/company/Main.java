@@ -26,9 +26,13 @@ public class Main {
             int Speed = sc.nextInt();
             Proletarian Proletarian = new Proletarian(name,HP,Strength,Speed);
             System.out.println("Character "+ name +" successfully created");
-            characters.add(Proletarian);
+            String charinf = Proletarian.toString();
+            GestionCHR.characters.add(charinf);
+            menu();
+
         }else if(choix == 3){
-            for(Object : characters){
+            for(Object s : GestionCHR.characters){
+                System.out.println(s);
 
             }
 

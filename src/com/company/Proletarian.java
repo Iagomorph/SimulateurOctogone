@@ -34,7 +34,8 @@ public class Proletarian {
         return this.Strength;
     }
     public String toString(){
-        return this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed;
+        String chara = this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed;
+        return chara;
     }
 
 }
