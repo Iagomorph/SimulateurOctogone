@@ -4,7 +4,7 @@ package com.company;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Proletarian {
+public class Proletarian implements Cloneable{
 
 //    public double getRandomDmg(int min, int max) {
 //        double mini = Math.ceil(min);
@@ -12,12 +12,12 @@ public class Proletarian {
 //        double result = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
 //        return result;
 //    }
-    private String name;
-    private int HP;
+    protected String name;
+    protected int HP;
     //Strength = damage
-    private int Strength;
+    protected int Strength;
     //Speed = initiative
-    private int speed;
+    protected int speed;
 
     Proletarian(String name, int HP, int Strength, int speed){
         this.name = name;
@@ -26,7 +26,10 @@ public class Proletarian {
         this.speed = speed;
 
     }
-
+    public Object clone() throws CloneNotSupportedException
+    {
+        return (Proletarian)super.clone();
+    }
     public void takeDamages(int Dmg){
         this.HP = this.HP - Dmg;
     }
