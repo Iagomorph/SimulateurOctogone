@@ -7,7 +7,7 @@ public class MageWarrior extends Proletarian{
 
     MageWarrior(String name, int HP, int Strength, int speed, int magicDmg, int shieldStrength){
         super(name, HP, Strength, speed);
-        this.magicDmg = magicDmg;
+        this.magicDmg = magicDmg*2;
         this.shieldStrength = shieldStrength;
     }
 
@@ -18,17 +18,18 @@ public class MageWarrior extends Proletarian{
         }
     }
     public int getDamages(){
+        this.magicDmg = this.magicDmg/2;
         return this.Strength + this.magicDmg;
     }
 
     public String toString(){
-        String chara = this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed+" Magic: "+this.magicDmg+" Shield Strength: "+this.shieldStrength;
+        String chara = " MageWarrior " + this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed+" Magic Power : "+this.magicDmg/2 +" Shield Strength: "+this.shieldStrength;
         return chara;
     }
-    public void recalculateMagicDmg(){
-        this.magicDmg = this.magicDmg/2;
-
-    }
+//    public void recalculateMagicDmg(){
+//        this.magicDmg = this.magicDmg/2;
+//
+//    }
 }
 
 

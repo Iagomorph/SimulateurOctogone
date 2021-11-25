@@ -20,7 +20,7 @@ public class Warrior extends Proletarian{
     }
 
     public String toString(){
-        String chara = this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed+" Shield Strength: "+this.shieldStrength;
+        String chara = " Warrior " + this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed+" Shield Strength: "+this.shieldStrength;
         return chara;
     }
 }
