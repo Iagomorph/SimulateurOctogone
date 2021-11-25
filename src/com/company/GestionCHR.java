@@ -14,5 +14,10 @@ public class GestionCHR {
         return characters.get(index);
     }
 
+    public void DeleteCharacter(int index){
+        characters.remove(index - 1);
+        charNames.remove(index - 1);
+    }
+
 
 }

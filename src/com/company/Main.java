@@ -12,13 +12,14 @@ public class Main {
                 "4. Create Rogue\n" +
                 "5. Display Character List\n" +
                 "6. Display Character Info\n" +
-                "7. Initiate Fight\n" +
-                "8. Quit");
+                "7. Delete Character \n" +
+                "8. Initiate Fight\n" +
+                "9. Quit");
 
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
         sc.nextLine();
-        if (choice == 8) {
+        if (choice == 9) {
             //quitte le programme
             System.exit(0);
 
@@ -110,7 +111,19 @@ public class Main {
             menu();
 
 
-        } else if (choice == 7) {
+        }else if (choice == 7){
+            GestionCHR list = new GestionCHR();
+            System.out.println("Select Character To Delete :");
+            for (int i = 0; i < GestionCHR.characters.size(); i++) {
+                System.out.println((i+1) + " " + GestionCHR.characters.get(i));
+            }
+            int index = sc.nextInt();
+            list.DeleteCharacter(index);
+            System.out.println("Character Successfully Deleted\n");
+            System.out.println();
+            menu();
+        }
+        else if (choice == 8) {
 //            //Bagarre Time !
             GestionCHR list = new GestionCHR();
             for (int i = 0; i < GestionCHR.characters.size(); i++) {
@@ -182,7 +195,7 @@ public class Main {
                         System.out.println(FighterC1.name + " Deals " + hit + " points of damage");
                         FighterC2.takeDamages(hit);
                         //on affiche les pv restants
-                        System.out.println("Remaining Hp of " + FighterC2.name + " = " + FighterC1.HP);
+                        System.out.println("Remaining Hp of " + FighterC2.name + " = " + FighterC2.HP);
                         // Nouvelle Bagarre
                         System.out.println(FighterC2.name + " Attacks ");
                         int hit2 = FighterC2.getDamages();
