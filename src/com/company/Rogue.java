@@ -6,8 +6,8 @@ public class Rogue extends Proletarian{
     int critCount = 0;
 
 
-    Rogue(String name, int HP, int Strength, int speed, int dodgeChance, int critChance) {
-        super(name, HP, Strength, speed);
+    Rogue(String name, int HP, int Strength, int speed, int dodgeChance, int critChance, String race) {
+        super(name, HP, Strength, speed, race);
         this.dodgeChance = dodgeChance;
         this.critChance = critChance;
     }
@@ -20,8 +20,9 @@ public class Rogue extends Proletarian{
             System.out.println( this.name + " dodged the hit!");
         }
     }
-    public int getDamages(){
+    public int getDamages(String opponentRace){
         int randomNbr = (int) Math.floor(Math.random() * (100 - 0 + 1)) + 0;
+        String nothing = opponentRace;
         if (randomNbr <= critChance && critCount == 0){
             int damages = this.Strength * 2;
             critCount++;
@@ -40,7 +41,8 @@ public class Rogue extends Proletarian{
                 + " Strength: " + this.Strength
                 + " Speed: " + this.speed
                 + " Dodge Chances: " + this.dodgeChance
-                + " Crit Chance: " + this.critChance;
+                + " Crit Chance: " + this.critChance
+                + " Race: "+ this.race;
         return chara;
     }
 }
