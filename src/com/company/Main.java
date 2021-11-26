@@ -286,15 +286,24 @@ public class Main {
 
         }else if (choice == 5){
             GestionCHR list = new GestionCHR();
-            System.out.print("Select Character To Delete :");
+            System.out.println("Select Character To Delete :");
             for (int i = 0; i < GestionCHR.characters.size(); i++) {
                 System.out.println((i+1) + " " + GestionCHR.characters.get(i));
             }
             int index = sc.nextInt();
-            list.DeleteCharacter(index);
-            System.out.println("Character Successfully Deleted");
-            System.out.println();
-            menu();
+            sc.nextLine();
+            System.out.println("Are you sure you want to delete  " + GestionCHR.characters.get(index - 1) + " ? ");
+            String confirm = sc.nextLine();
+            if (confirm.equals("y")) {
+                list.DeleteCharacter(index);
+                System.out.println("Character Successfully Deleted");
+                System.out.println();
+                menu();
+            }
+            else {
+                System.out.println("returning to menu...");
+                menu();
+            }
         }
         else if (choice == 6) {
 //            //Bagarre Time !
@@ -324,7 +333,7 @@ public class Main {
 
             int millis = 680;
             int turnCount = 0 ;
-            while (FighterC1.HP > 0 && FighterC2.HP > 0) {
+            while (FighterC1.HP > 0 && FighterC2.HP > 0 && turnCount <= 20) {
                 turnCount++;
                 //int hit = FighterC1.getDamages(FighterC2.race);
                 //int hit2 = FighterC2.getDamages(FighterC1.race);
@@ -451,6 +460,10 @@ public class Main {
                         sc.nextLine();
                     }
                 }
+            }
+            if (turnCount > 20){
+                System.out.println("after " + turnCount + " tiring rounds both fighters realised the true victory" +
+                        " was the friends they made along the way");
             }
             if (FighterC2.HP <= 0){
                 System.out.println(FighterC1.name + " won the hustle, he clapped his opponnent's cheeks");
