@@ -21,7 +21,7 @@ public class Proletarian implements Cloneable{
     //Speed = initiative
     protected int speed;
 
-    Proletarian(String name, int HP, int Strength, int speed, String race){
+    Proletarian(String name, int HP, int Strength, int speed, String race) throws CloneNotSupportedException, InterruptedException {
         this.race = race;
         this.name = name;
         this.HP = HP;
@@ -39,6 +39,7 @@ public class Proletarian implements Cloneable{
             this.HP = this.HP + 3;
         }else{
             System.out.println("invalid race ");
+            Main.menu();
         }
 
     }

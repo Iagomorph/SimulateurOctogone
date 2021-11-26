@@ -4,7 +4,7 @@ public class Warrior extends Proletarian{
 
     private int shieldStrength;
 
-    Warrior(String name, int HP, int Strength, int speed, int shieldStrength, String race){
+    Warrior(String name, int HP, int Strength, int speed, int shieldStrength, String race) throws InterruptedException, CloneNotSupportedException {
         super(name, HP, Strength, speed, race);
         this.shieldStrength = shieldStrength;
     }

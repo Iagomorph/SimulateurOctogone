@@ -2,7 +2,7 @@ package com.company;
 
 public class Racist extends Proletarian{
 
-    Racist(String name, int HP, int Strength, int speed, String race){
+    Racist(String name, int HP, int Strength, int speed, String race) throws InterruptedException, CloneNotSupportedException {
         super(name, HP, Strength, speed, race);
 
     }

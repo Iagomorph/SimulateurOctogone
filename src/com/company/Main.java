@@ -4,17 +4,16 @@ import java.util.Scanner;
 
 public class Main {
 
-    static void menu() throws CloneNotSupportedException {
+    static void menu() throws CloneNotSupportedException, InterruptedException {
+
         System.out.println("Choose :");
-        System.out.println("1. Create Proletarian\n" +
-                "2. Create Warrior\n" +
-                "3. Create Mage\n" +
-                "4. Create Rogue\n" +
-                "5. Display Character List\n" +
-                "6. Display Character Info\n" +
-                "7. Delete Character \n" +
-                "8. Initiate Fight\n" +
-                "9. Quit");
+        System.out.println("1. Create Character\n" +
+                "2. About races and classes\n" +
+                "3. Display Character List\n" +
+                "4. Display Character Info\n" +
+                "5. Delete Character \n" +
+                "6. Initiate Fight\n" +
+                "7. Quit");
 
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
@@ -24,8 +23,8 @@ public class Main {
             System.exit(0);
 
         }
-        else if(choice == 1) {
-            System.out.println("Chose a Class\n" +
+        else if(choice == 1){
+            System.out.println("Choose a Class\n" +
                     "1. Create Proletarian\n" +
                     "2. Create Warrior\n" +
                     "3. Create Mage\n" +
@@ -55,7 +54,8 @@ public class Main {
                 GestionCHR.charNames.add(name);
                 menu();
 
-            } else if (choiceChar == 2) {
+            }
+            else if(choiceChar == 2){
                 //créer un nouveau guerrier
                 System.out.println("Name your Warrior : ");
                 String nameWarrior = sc.nextLine();
@@ -76,7 +76,7 @@ public class Main {
                 GestionCHR.charNames.add(nameWarrior);
                 menu();
 
-            } else if (choiceChar == 3) {
+            }else if(choiceChar == 3){
                 //créer un nouveau Mage
                 System.out.println("Name your Mage : ");
                 String name = sc.nextLine();
@@ -97,7 +97,9 @@ public class Main {
                 GestionCHR.charNames.add(name);
                 menu();
 
-            } else if (choiceChar == 4) {
+
+            }
+            else if(choiceChar == 4){
                 //créer un nouveau Voleur
                 System.out.println("Name your Rogue : ");
                 String name = sc.nextLine();
@@ -119,8 +121,8 @@ public class Main {
                 GestionCHR.characters.add(Rogue);
                 GestionCHR.charNames.add(name);
                 menu();
-
-            } else if (choiceChar == 5) {
+            }
+            else if(choiceChar == 5){
                 //créer un nouveau Raciste
                 System.out.println("Name your Racist : ");
                 String name = sc.nextLine();
@@ -182,9 +184,8 @@ public class Main {
             } else if (choice == 8) {
                 menu();
             }
-            ;
-
-        }else if(choice == 2){
+        }
+        else if(choice == 2){
             System.out.println("------- About Classes ------");
             System.out.println("Proletarian\n" +
                     "Also known as farmers, this class doesn't provide any sort of advantage whatsoever.");
@@ -207,7 +208,7 @@ public class Main {
                     "From the deep swamps of distant lands, Witches come to the arena\n" +
                     "well equipped with their most trustworthy potions. During a fight,\n" +
                     "they never hesitate to either double their damage or heal their HP using\n" +
-                    "one of them. Good thing witches don't have unlimited potions !");
+                    "one of their elixirs. Good thing witches don't have unlimited potions !");
             System.out.println();
             System.out.println("Pyromancer:\n" +
                     "Pyromancers never fail to bring the heat wherever they go !\n" +
@@ -266,12 +267,14 @@ public class Main {
             //selection combattant 1
             System.out.println("Choose Fighter One : ");
             int indexOp1 = sc.nextInt() - 1;
+            sc.nextLine();
             Proletarian Fighter = list.GetCharacter(indexOp1);
             Proletarian FighterC1 = (Proletarian) Fighter.clone();
 
             //selection combattant 2
             System.out.println("Choose Fighter Two : ");
             int indexOp2 = sc.nextInt() - 1;
+            sc.nextLine();
             Proletarian Fighter1 = list.GetCharacter(indexOp2);
             Proletarian FighterC2 = (Proletarian) Fighter1.clone();
             int coinFlip = (int) Math.random() <= 0.5 ? 1 : 2;
@@ -281,96 +284,137 @@ public class Main {
                 System.out.println("We toss a coin to decide who goes first");
             }
 
+            int millis = 680;
+            int turnCount = 0 ;
             while (FighterC1.HP > 0 && FighterC2.HP > 0) {
-                //tant que les deux tiennent debout
+                turnCount++;
+                int hit = FighterC1.getDamages(FighterC2.race);
+                int hit2 = FighterC2.getDamages(FighterC1.race);
                 if (FighterC1.speed > FighterC2.speed) {
-                    System.out.println("--------NEXT TURN !--------");
-                    int hit = FighterC1.getDamages(FighterC2.race);
+                    //nouveau tour
+                    System.out.println(" ---------- Turn " + turnCount + " ----------");
+                    Thread.sleep(millis);
+//                    int hit = FighterC1.getDamages(FighterC2.race);
                     System.out.println(FighterC1.name + " Attacks ");
+                    Thread.sleep(millis);
                     //attaque du fighter 1
                     System.out.println(FighterC1.name + " Deals " + hit + " points of damage");
+                    Thread.sleep(millis);
                     FighterC2.takeDamages(hit);
                     //on affiche les pv restants
                     System.out.println("Remaining Hp of " + FighterC2.name + " = " + FighterC2.HP);
+                    Thread.sleep(millis);
+                    System.out.println();
+
                     // Nouvelle Bagarre
                     System.out.println(FighterC2.name + " Attacks ");
-                    int hit2 = FighterC2.getDamages(FighterC1.race);
+                    Thread.sleep(millis);
+//                    int hit2 = FighterC2.getDamages(FighterC1.race);
                     //attaque du fighter 2
                     System.out.println(FighterC2.name + " Deals " + hit2 + " points of damage");
+                    Thread.sleep(millis);
                     FighterC1.takeDamages(hit2);
                     //on affiche les pv restants
                     System.out.println("Remaining Hp of " + FighterC1.name + " = " + FighterC1.HP);
-                    System.out.println("Press enter to continue");
+                    Thread.sleep(millis);
+                    System.out.println();
+                    System.out.println("Press enter to initiate next turn...");
                     sc.nextLine();
 
                 } else if (FighterC1.speed < FighterC2.speed) {
-                    System.out.println("--------NEXT TURN !--------");
+                    System.out.println("Turn " + turnCount);
+                    Thread.sleep(millis);
                     System.out.println(FighterC2.name + " Attacks ");
-                    int hit = FighterC2.getDamages(FighterC1.race);
+                    Thread.sleep(millis);
                     //attaque du fighter 1
                     System.out.println(FighterC2.name + " Deals " + hit + " points of damage");
+                    Thread.sleep(millis);
                     FighterC1.takeDamages(hit);
                     //on affiche les pv restants
                     System.out.println("Remaining Hp of " + FighterC1.name + " = " + FighterC1.HP);
+                    Thread.sleep(millis);
+                    System.out.println();
                     // Nouvelle Bagarre
                     System.out.println(FighterC1.name + " Attacks ");
-                    int hit2 = FighterC1.getDamages(FighterC2.race);
+                    Thread.sleep(millis);
                     //attaque du fighter 2
                     System.out.println(FighterC1.name + " Deals " + hit2 + " points of damage");
+                    Thread.sleep(millis);
                     FighterC2.takeDamages(hit2);
                     //on affiche les pv restants
                     System.out.println("Remaining Hp of " + FighterC2.name + " = " + FighterC2.HP);
-                    System.out.println("Press enter to continue");
+                    Thread.sleep(millis);
+                    System.out.println();
+                    System.out.println("Press enter to initiate next turn...");
                     sc.nextLine();
 
                 }else{
                     if (coinFlip == 1){
-                        System.out.println("--------NEXT TURN !--------");
+
+                        System.out.println("Turn " + turnCount);
+                        Thread.sleep(millis);
                         System.out.println(FighterC1.name + " Attacks ");
-                        int hit = FighterC1.getDamages(FighterC2.race);
+                        Thread.sleep(millis);
                         //attaque du fighter 1
                         System.out.println(FighterC1.name + " Deals " + hit + " points of damage");
+                        Thread.sleep(millis);
                         FighterC2.takeDamages(hit);
                         //on affiche les pv restants
                         System.out.println("Remaining Hp of " + FighterC2.name + " = " + FighterC2.HP);
+                        Thread.sleep(millis);
+
+                        System.out.println();
                         // Nouvelle Bagarre
                         System.out.println(FighterC2.name + " Attacks ");
-                        int hit2 = FighterC2.getDamages(FighterC1.race);
+                        Thread.sleep(millis);
                         //attaque du fighter 2
                         System.out.println(FighterC2.name + " Deals " + hit2 + " points of damage");
+                        Thread.sleep(millis);
                         FighterC1.takeDamages(hit2);
                         //on affiche les pv restants
                         System.out.println("Remaining Hp of " + FighterC1.name + " = " + FighterC1.HP);
-                        System.out.println("Press enter to continue");
+                        Thread.sleep(millis);
+                        System.out.println();
+                        System.out.println("Press enter to initiate next turn...");
                         sc.nextLine();
+
                     }
                     else{
-                        System.out.println("--------NEXT TURN !--------");
+                        System.out.println(" ---------- Turn " + turnCount + " ----------");
+                        Thread.sleep(millis);
                         System.out.println(FighterC2.name + " Attacks ");
-                        int hit = FighterC2.getDamages(FighterC1.race);
+                        Thread.sleep(millis);
                         //attaque du fighter 1
                         System.out.println(FighterC2.name + " Deals " + hit + "points of damage");
+                        Thread.sleep(millis);
                         FighterC1.takeDamages(hit);
                         //on affiche les pv restants
                         System.out.println("Remaining Hp of " + FighterC1.name + " = " + FighterC1.HP);
+                        Thread.sleep(millis);
+                        System.out.println();
                         // Nouvelle Bagarre
                         System.out.println(FighterC1.name + " Attacks ");
-                        int hit2 = FighterC1.getDamages(FighterC2.race);
+                        Thread.sleep(600);
                         //attaque du fighter 2
                         System.out.println(FighterC1.name + " Deals " + hit2 + "points of damage");
+                        Thread.sleep(millis);
                         FighterC2.takeDamages(hit2);
                         //on affiche les pv restants
                         System.out.println("Remaining Hp of " + FighterC2.name + " = " + FighterC2.HP);
-                        System.out.println("Press any key to continue");
+                        Thread.sleep(millis);
+                        System.out.println();
+                        System.out.println("Press enter to initiate next turn...");
                         sc.nextLine();
                     }
                 }
             }
             if (FighterC2.HP <= 0){
                 System.out.println(FighterC1.name + " won the hustle, he clapped his opponnent's cheeks");
+                Thread.sleep(millis);
             }
             else {
                 System.out.println(FighterC2.name + " won the hustle, he clapped his opponnent's cheeks");
+                Thread.sleep(millis);
             }
             System.out.println("Press enter to return to menu");
             sc.nextLine();
@@ -445,7 +489,7 @@ public class Main {
 
 
 
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) throws CloneNotSupportedException, InterruptedException {
         menu();
     }
 }
