@@ -35,16 +35,17 @@ public class Main {
             sc.nextLine();
             if (choiceChar == 1) {
                 //créer un nouveau Prolétaire
-                System.out.println("Name your Proletarian : ");
+                System.out.print("Name your Proletarian : ");
                 String name = sc.nextLine();
-                System.out.println("Define Hp for " + name + " ");
+                System.out.print("Define Hp for " + name + " : ");
                 int HP = sc.nextInt();
-                System.out.println("Define Strength for " + name);
+                System.out.print("Define Strength for " + name+ " : ");
                 int Strength = sc.nextInt();
-                System.out.println("Define Speed (Initiative) for " + name);
+                System.out.print("Define Speed (Initiative) for " + name+ " : ");
                 int Speed = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Races available: Elve, Orc, Human, Dwarf\nChose the character's race");
+                System.out.println("Races available: Elve, Orc, Human, Dwarf");
+                System.out.print("Define " + name + "'s race"+ " : ");
                 String race = sc.nextLine();
                 Proletarian Proletarian = new Proletarian(name, HP, Strength, Speed, race);
                 System.out.println("Character " + name + " successfully created");
@@ -55,18 +56,19 @@ public class Main {
             }
             else if(choiceChar == 2){
                 //créer un nouveau guerrier
-                System.out.println("Name your Warrior : ");
+                System.out.print("Name your Warrior : ");
                 String nameWarrior = sc.nextLine();
-                System.out.println("Define Hp for " + nameWarrior + " ");
+                System.out.print("Define Hp for " + nameWarrior + " : ");
                 int HP = sc.nextInt();
-                System.out.println("Define Strength for " + nameWarrior);
+                System.out.print("Define Strength for " + nameWarrior + " : ");
                 int Strength = sc.nextInt();
-                System.out.println("Define Speed (Initiative) for " + nameWarrior);
+                System.out.print("Define Speed (Initiative) for " + nameWarrior + " : ");
                 int Speed = sc.nextInt();
-                System.out.println("Define Shield Strength for " + nameWarrior);
+                System.out.print("Define Shield Strength for " + nameWarrior + " : ");
                 int shieldStrength = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Races available: Elve, Orc, Human, Dwarf\nChose the character's race");
+                System.out.println("Races available: Elve, Orc, Human, Dwarf");
+                System.out.print("Define " + nameWarrior + "'s race"+ " : ");
                 String race = sc.nextLine();
                 Proletarian Warrior = new Warrior(nameWarrior, HP, Strength, Speed, shieldStrength, race);
                 System.out.println("Character " + nameWarrior + " successfully created");
@@ -76,18 +78,19 @@ public class Main {
 
             }else if(choiceChar == 3){
                 //créer un nouveau Mage
-                System.out.println("Name your Mage : ");
+                System.out.print("Name your Mage : ");
                 String name = sc.nextLine();
-                System.out.println("Define Hp for " + name + " ");
+                System.out.print("Define Hp for " + name + " : ");
                 int HP = sc.nextInt();
-                System.out.println("Define Strength for " + name);
+                System.out.print("Define Strength for " + name+ " : ");
                 int Strength = sc.nextInt();
-                System.out.println("Define Speed (Initiative) for " + name);
+                System.out.print("Define Speed (Initiative) for " + name+ " : ");
                 int Speed = sc.nextInt();
-                System.out.println("Define Magic Damage for " + name);
+                System.out.print("Define Magic Damage for " + name+ " : ");
                 int magicDmg = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Races available: Elve, Orc, Human, Dwarf\nChose the character's race");
+                System.out.println("Races available: Elve, Orc, Human, Dwarf");
+                System.out.print("Define " + name + "'s race"+ " : ");
                 String race = sc.nextLine();
                 Proletarian Mage = new Mage(name, HP, Strength, Speed, magicDmg, race);
                 System.out.println("Character " + name + " successfully created");
@@ -99,20 +102,21 @@ public class Main {
             }
             else if(choiceChar == 4){
                 //créer un nouveau Voleur
-                System.out.println("Name your Rogue : ");
+                System.out.print("Name your Rogue : ");
                 String name = sc.nextLine();
-                System.out.println("Define Hp for " + name + " ");
+                System.out.print("Define Hp for " + name + " : ");
                 int HP = sc.nextInt();
-                System.out.println("Define Strength for " + name);
+                System.out.print("Define Strength for " + name+ " : ");
                 int Strength = sc.nextInt();
-                System.out.println("Define Speed (Initiative) for " + name);
+                System.out.print("Define Speed (Initiative) for " + name+ " : ");
                 int Speed = sc.nextInt();
-                System.out.println("Define Dodge Chances (%) for " + name);
+                System.out.print("Define Dodge Chances (%) for " + name+ " : ");
                 int DodgeChance = sc.nextInt();
-                System.out.println("Define Critical Hit Chances (%) for " + name);
+                System.out.print("Define Critical Hit Chances (%) for " + name+ " : ");
                 int CritChance = sc.nextInt();
                 sc.nextLine();
-                System.out.println("Races available: Elve, Orc, Human, Dwarf\nChose the character's race");
+                System.out.println("Races available: Elve, Orc, Human, Dwarf");
+                System.out.print("Define " + name + "'s race"+ " : ");
                 String race = sc.nextLine();
                 Proletarian Rogue = new Rogue(name, HP, Strength, Speed, DodgeChance, CritChance, race);
                 System.out.println("Character " + name + " successfully created");
@@ -122,17 +126,17 @@ public class Main {
             }
             else if(choiceChar == 5){
                 //créer un nouveau Raciste
-                System.out.println("Name your Racist : ");
+                System.out.print("Name your Racist : ");
                 String name = sc.nextLine();
-                System.out.println("Define Hp for " + name + " ");
+                System.out.print("Define Hp for " + name + " : ");
                 int HP = sc.nextInt();
-                System.out.println("Define Strength for " + name);
+                System.out.print("Define Strength for " + name+ " : ");
                 int Strength = sc.nextInt();
-                System.out.println("Define Speed (Initiative) for " + name);
+                System.out.print("Define Speed (Initiative) for " + name+ " : ");
                 int Speed = sc.nextInt();
                 sc.nextLine();
-                System.out.println("\nRaces available: Elve, Orc, Human, Dwarf\n");
-                System.out.println("Define " + name + "'s race");
+                System.out.println("Races available: Elve, Orc, Human, Dwarf");
+                System.out.print("Define " + name + "'s race"+ " : ");
                 String race = sc.nextLine();
                 Proletarian Racist = new Racist(name, HP, Strength, Speed, race);
                 System.out.println("Character " + name + " successfully created");
@@ -186,7 +190,7 @@ public class Main {
 
         } else if (choice == 4) {
             //Affiche les infos d'un perso spécifique
-            System.out.println("Input Character's number ");
+            System.out.print("Input Character's number :");
             int charac = sc.nextInt();
             System.out.println(GestionCHR.characters.get(charac - 1));
             menu();
@@ -194,13 +198,13 @@ public class Main {
 
         }else if (choice == 5){
             GestionCHR list = new GestionCHR();
-            System.out.println("Select Character To Delete :");
+            System.out.print("Select Character To Delete :");
             for (int i = 0; i < GestionCHR.characters.size(); i++) {
                 System.out.println((i+1) + " " + GestionCHR.characters.get(i));
             }
             int index = sc.nextInt();
             list.DeleteCharacter(index);
-            System.out.println("Character Successfully Deleted\n");
+            System.out.println("Character Successfully Deleted");
             System.out.println();
             menu();
         }
@@ -211,14 +215,14 @@ public class Main {
                 System.out.println("Fighter " + (i+1) + " " + GestionCHR.characters.get(i));
             }
             //selection combattant 1
-            System.out.println("Choose Fighter One : ");
+            System.out.print("Choose Fighter One : ");
             int indexOp1 = sc.nextInt() - 1;
             sc.nextLine();
             Proletarian Fighter = list.GetCharacter(indexOp1);
             Proletarian FighterC1 = (Proletarian) Fighter.clone();
 
             //selection combattant 2
-            System.out.println("Choose Fighter Two : ");
+            System.out.print("Choose Fighter Two : ");
             int indexOp2 = sc.nextInt() - 1;
             sc.nextLine();
             Proletarian Fighter1 = list.GetCharacter(indexOp2);
@@ -227,7 +231,7 @@ public class Main {
 
             if (FighterC1.speed == FighterC2.speed){
                 System.out.println("Both Fighters have equal speed");
-                System.out.println("We toss a coin to decide who goes first");
+                System.out.println("Tossing a coin to decide who goes first");
             }
 
             int millis = 680;

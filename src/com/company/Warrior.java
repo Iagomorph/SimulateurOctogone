@@ -12,7 +12,9 @@ public class Warrior extends Proletarian{
     public void takeDamages(int Dmg){
         if(shieldStrength<Dmg) {
             this.HP = this.HP - Dmg + shieldStrength;
-            System.out.println();
+            System.out.println(this.name + " blocked " + shieldStrength + " damages with his massive shield");
+        }else{
+            System.out.println(this.name + " blocked all damages");
         }
     }
     public int getDamages(String opponentRace){
