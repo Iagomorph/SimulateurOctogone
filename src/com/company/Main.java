@@ -6,7 +6,7 @@ public class Main {
 
     static void menu() throws CloneNotSupportedException, InterruptedException {
 
-        System.out.println("Chose :");
+        System.out.println("Choose :");
         System.out.println("1. Create Character\n" +
                 "2. About races and classes\n" +
                 "3. Display Character List\n" +
@@ -24,13 +24,16 @@ public class Main {
 
         }
         else if(choice == 1){
-            System.out.println("Chose a Class\n" +
+            System.out.println("Choose a Class\n" +
                     "1. Create Proletarian\n" +
                     "2. Create Warrior\n" +
                     "3. Create Mage\n" +
                     "4. Create Rogue\n" +
                     "5. Create Racist\n" +
-                    "6. Return to Main Menu");
+                    "6. Create Witch\n" +
+                    "7. Create Pyromancer\n" +
+                    "8. Create Mage Warrior\n" +
+                    "9. Return to Main Menu");
             int choiceChar = sc.nextInt();
             sc.nextLine();
             if (choiceChar == 1) {
@@ -143,8 +146,75 @@ public class Main {
                 GestionCHR.characters.add(Racist);
                 GestionCHR.charNames.add(name);
                 menu();
-            }else if (choiceChar == 6){
+
+            } else if (choiceChar == 6) {
+                //créer une nouvelle Sorcière
+                System.out.println("Name your Witch : ");
+                String name = sc.nextLine();
+                System.out.println("Define Hp for " + name + " ");
+                int HP = sc.nextInt();
+                System.out.println("Define Strength for " + name);
+                int Strength = sc.nextInt();
+                System.out.println("Define Speed (Initiative) for " + name);
+                int Speed = sc.nextInt();
+                System.out.println("Define Number of Potions for " + name);
+                int potionsQuantity = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Races available: Elve, Orc, Human, Dwarf\n");
+                System.out.println("Define " + name + "'s race");
+                String race = sc.nextLine();
+                Proletarian Witch = new Witch(name, HP, Strength, Speed, potionsQuantity, race);
+                System.out.println("Character " + name + " successfully created");
+                GestionCHR.characters.add(Witch);
+                GestionCHR.charNames.add(name);
                 menu();
+
+            } else if (choiceChar == 7) {
+                //créer un nouveau Pyromancien
+                System.out.println("Name your Pyromancer : ");
+                String name = sc.nextLine();
+                System.out.println("Define Hp for " + name + " ");
+                int HP = sc.nextInt();
+                System.out.println("Define Strength for " + name);
+                int Strength = sc.nextInt();
+                System.out.println("Define Speed (Initiative) for " + name);
+                int Speed = sc.nextInt();
+                System.out.println("Define Number of Bombs for " + name);
+                int bombsQuantity = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Races available: Elve, Orc, Human, Dwarf\n");
+                System.out.println("Define " + name + "'s race");
+                String race = sc.nextLine();
+                Proletarian Pyromancer = new Pyromancer(name, HP, Strength, Speed, bombsQuantity, race);
+                System.out.println("Character " + name + " successfully created");
+                GestionCHR.characters.add(Pyromancer);
+                GestionCHR.charNames.add(name);
+                menu();
+            } else if (choiceChar == 8) {
+                //créer un nouveau Mage Guerrier
+                System.out.println("Name your Mage Warrior : ");
+                String name = sc.nextLine();
+                System.out.println("Define Hp for " + name + " ");
+                int HP = sc.nextInt();
+                System.out.println("Define Strength for " + name);
+                int Strength = sc.nextInt();
+                System.out.println("Define Speed (Initiative) for " + name);
+                int Speed = sc.nextInt();
+                System.out.println("Define Magic Damage for " + name);
+                int magicDmg = sc.nextInt();
+                System.out.println("Define Shield Strength for " + name);
+                int shieldStrength = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Races available: Elve, Orc, Human, Dwarf\n");
+                System.out.println("Define " + name + "'s race");
+                String race = sc.nextLine();
+                Proletarian MageWarrior = new MageWarrior(name, HP, Strength, Speed, magicDmg, shieldStrength, race);
+                System.out.println("Character " + name + " successfully created");
+                GestionCHR.characters.add(MageWarrior);
+                GestionCHR.charNames.add(name);
+                menu();
+            }else if(choiceChar == 9){
+            menu();
             }
         }
         else if(choice == 2){
@@ -165,6 +235,24 @@ public class Main {
                     " they believe people who show any kind of difference are out to get them,\n" +
                     " they will recklessly attack fighters from a different race dealing thrice the damage,\n" +
                     " but it comes with a huge downside, they will game end themselves if they are to fight a member of their own race. ");
+            System.out.println();
+            System.out.println("Witch:\n" +
+                    "From the deep swamps of distant lands, Witches come to the arena\n" +
+                    "well equipped with their most trustworthy potions. During a fight,\n" +
+                    "they never hesitate to either double their damage or heal their HP using\n" +
+                    "one of their elixirs. Good thing witches don't have unlimited potions !");
+            System.out.println();
+            System.out.println("Pyromancer:\n" +
+                    "Pyromancers never fail to bring the heat wherever they go !\n" +
+                    "With the power of fire and explosions, they are very volatile fighters,\n" +
+                    "sometimes even using bombs to deal incredible damage to the enemy, \n" +
+                    "but hurting themselves in the way.");
+            System.out.println();
+            System.out.println("Mage Warrior:\n" +
+                    "Mage Warriors are mages called to defend their kingdom from invaders.\n" +
+                    "They have the power of mages, with the defensive abilities of warriors.\n" +
+                    "As such, they can deal extra magic damage, \n" +
+                    "and use their shield to receive and even negate incoming damage.");
             System.out.println();
             System.out.println("------- About Races ------");
             System.out.println("Elves:\n" +
@@ -238,16 +326,16 @@ public class Main {
             int turnCount = 0 ;
             while (FighterC1.HP > 0 && FighterC2.HP > 0) {
                 turnCount++;
-                int hit = FighterC1.getDamages(FighterC2.race);
-                int hit2 = FighterC2.getDamages(FighterC1.race);
+                //int hit = FighterC1.getDamages(FighterC2.race);
+                //int hit2 = FighterC2.getDamages(FighterC1.race);
                 if (FighterC1.speed > FighterC2.speed) {
                     //nouveau tour
                     System.out.println(" ---------- Turn " + turnCount + " ----------");
                     Thread.sleep(millis);
-//                    int hit = FighterC1.getDamages(FighterC2.race);
                     System.out.println(FighterC1.name + " Attacks ");
                     Thread.sleep(millis);
                     //attaque du fighter 1
+                    int hit = FighterC1.getDamages(FighterC2.race);
                     System.out.println(FighterC1.name + " Deals " + hit + " points of damage");
                     Thread.sleep(millis);
                     FighterC2.takeDamages(hit);
@@ -259,7 +347,7 @@ public class Main {
                     // Nouvelle Bagarre
                     System.out.println(FighterC2.name + " Attacks ");
                     Thread.sleep(millis);
-//                    int hit2 = FighterC2.getDamages(FighterC1.race);
+                    int hit2 = FighterC2.getDamages(FighterC1.race);
                     //attaque du fighter 2
                     System.out.println(FighterC2.name + " Deals " + hit2 + " points of damage");
                     Thread.sleep(millis);
@@ -272,11 +360,12 @@ public class Main {
                     sc.nextLine();
 
                 } else if (FighterC1.speed < FighterC2.speed) {
-                    System.out.println("Turn " + turnCount);
+                    System.out.println(" ---------- Turn " + turnCount + " ----------");
                     Thread.sleep(millis);
                     System.out.println(FighterC2.name + " Attacks ");
                     Thread.sleep(millis);
                     //attaque du fighter 1
+                    int hit = FighterC2.getDamages(FighterC1.race);
                     System.out.println(FighterC2.name + " Deals " + hit + " points of damage");
                     Thread.sleep(millis);
                     FighterC1.takeDamages(hit);
@@ -288,6 +377,7 @@ public class Main {
                     System.out.println(FighterC1.name + " Attacks ");
                     Thread.sleep(millis);
                     //attaque du fighter 2
+                    int hit2 = FighterC1.getDamages(FighterC2.race);
                     System.out.println(FighterC1.name + " Deals " + hit2 + " points of damage");
                     Thread.sleep(millis);
                     FighterC2.takeDamages(hit2);
@@ -301,11 +391,12 @@ public class Main {
                 }else{
                     if (coinFlip == 1){
 
-                        System.out.println("Turn " + turnCount);
+                        System.out.println(" ---------- Turn " + turnCount + " ----------");
                         Thread.sleep(millis);
                         System.out.println(FighterC1.name + " Attacks ");
                         Thread.sleep(millis);
                         //attaque du fighter 1
+                        int hit = FighterC1.getDamages(FighterC2.race);
                         System.out.println(FighterC1.name + " Deals " + hit + " points of damage");
                         Thread.sleep(millis);
                         FighterC2.takeDamages(hit);
@@ -318,6 +409,7 @@ public class Main {
                         System.out.println(FighterC2.name + " Attacks ");
                         Thread.sleep(millis);
                         //attaque du fighter 2
+                        int hit2 = FighterC2.getDamages(FighterC1.race);
                         System.out.println(FighterC2.name + " Deals " + hit2 + " points of damage");
                         Thread.sleep(millis);
                         FighterC1.takeDamages(hit2);
@@ -335,6 +427,7 @@ public class Main {
                         System.out.println(FighterC2.name + " Attacks ");
                         Thread.sleep(millis);
                         //attaque du fighter 1
+                        int hit = FighterC2.getDamages(FighterC1.race);
                         System.out.println(FighterC2.name + " Deals " + hit + "points of damage");
                         Thread.sleep(millis);
                         FighterC1.takeDamages(hit);
@@ -344,8 +437,9 @@ public class Main {
                         System.out.println();
                         // Nouvelle Bagarre
                         System.out.println(FighterC1.name + " Attacks ");
-                        Thread.sleep(600);
+                        Thread.sleep(millis);
                         //attaque du fighter 2
+                        int hit2 = FighterC1.getDamages(FighterC2.race);
                         System.out.println(FighterC1.name + " Deals " + hit2 + "points of damage");
                         Thread.sleep(millis);
                         FighterC2.takeDamages(hit2);

@@ -43,6 +43,10 @@ public class Proletarian implements Cloneable{
         }
 
     }
+
+    public Proletarian(String name, int hp, int strength, int speed) {
+    }
+
     public Object clone() throws CloneNotSupportedException
     {
         return (Proletarian)super.clone();
