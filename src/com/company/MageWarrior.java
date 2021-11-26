@@ -5,7 +5,7 @@ public class MageWarrior extends Proletarian{
     private int magicDmg;
     private int shieldStrength;
 
-    MageWarrior(String name, int HP, int Strength, int speed, int magicDmg, int shieldStrength, String race){
+    MageWarrior(String name, int HP, int Strength, int speed, int magicDmg, int shieldStrength, String race) throws InterruptedException, CloneNotSupportedException {
         super(name, HP, Strength, speed, race);
         this.magicDmg = magicDmg*2;
         this.shieldStrength = shieldStrength;

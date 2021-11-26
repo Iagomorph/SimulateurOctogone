@@ -6,7 +6,7 @@ public class Rogue extends Proletarian{
     int critCount = 0;
 
 
-    Rogue(String name, int HP, int Strength, int speed, int dodgeChance, int critChance, String race) {
+    Rogue(String name, int HP, int Strength, int speed, int dodgeChance, int critChance, String race) throws InterruptedException, CloneNotSupportedException {
         super(name, HP, Strength, speed, race);
         this.dodgeChance = dodgeChance;
         this.critChance = critChance;
