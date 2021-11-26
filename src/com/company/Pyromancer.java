@@ -3,9 +3,8 @@ package com.company;
 public class Pyromancer extends Proletarian{
 
     private int bombsQuantity;
-    private int pyroDmg;
 
-    Pyromancer(String name, int HP, int Strength, int speed, int bombsQuantity, String race){
+    Pyromancer(String name, int HP, int Strength, int speed, int bombsQuantity, String race) throws InterruptedException, CloneNotSupportedException {
         super(name, HP, Strength, speed, race);
         this.bombsQuantity = bombsQuantity;
     }
@@ -16,25 +15,19 @@ public class Pyromancer extends Proletarian{
 
     public int getDamages(String opponentRace) {
         String nothing = opponentRace;
-        int randomInt = (int) Math.random();
-        if(bombsQuantity>0 && randomInt>0.9){
+        float randomFloat = (float) Math.random();
+        if(bombsQuantity>0 && randomFloat>0.8){
             bombsQuantity = bombsQuantity - 1;
             this.HP = this.HP - this.Strength;
-            System.out.println(this.name+" the Pyromancer blows up the battlefield! They deal "+this.Strength*2+" damage, but loose"+this.Strength+" HP.");
-            pyroDmg = this.Strength-1;
-            return this.Strength*2;
-        }else{
-            pyroDmg = pyroDmg - 1;
-            if(pyroDmg>0){
-                return this.Strength+pyroDmg;
+            System.out.println(this.name+" the Pyromancer blows up the battlefield! They deal triple damage, but loose "+ this.Strength +" HP.");
+            return this.Strength*3;
             }else{
                 return this.Strength;
-            }
         }
     }
 
     public String toString(){
-        String chara = " Mage " + this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed+" Bombs: "+this.bombsQuantity;
+        String chara = " Pyromancer " + this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed+ " Race: "+ this.race + " Bombs: " + this.bombsQuantity;
         return chara;
     }
 
