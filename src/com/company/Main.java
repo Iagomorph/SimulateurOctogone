@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -307,6 +308,9 @@ public class Main {
         }
         else if (choice == 6) {
 //            //Bagarre Time !
+            int turnBet = 0;
+            int issueBet = 0;
+
             GestionCHR list = new GestionCHR();
             for (int i = 0; i < GestionCHR.characters.size(); i++) {
                 System.out.println("Fighter " + (i+1) + " " + GestionCHR.characters.get(i));
@@ -325,7 +329,31 @@ public class Main {
             Proletarian Fighter1 = list.GetCharacter(indexOp2);
             Proletarian FighterC2 = (Proletarian) Fighter1.clone();
             int coinFlip = (int) Math.random() <= 0.5 ? 1 : 2;
-
+            
+            //pari
+            System.out.print("Would you like to bet ? y/n : ");
+            String bet = sc.nextLine();
+            if (Objects.equals(bet, "y") || Objects.equals(bet, "Y")){
+                System.out.println("What would you like to bet on ? : ");
+                System.out.println("1. The issue of the fight\n2. The duration of the fight");
+                int betType = sc.nextInt();
+                sc.nextLine();
+                if (betType == 1){
+                    System.out.print("Which fighter do you favor ? ");
+                    issueBet = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("you picked Fighter "+ issueBet);
+                }else if (betType == 2){
+                    System.out.print("How long do you think the fight will take ? ");
+                    turnBet = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("you bet on turn " + turnBet);
+                }else {
+                    System.out.println("Philemon : 'T'es con, tu retourne au menu'");
+                    menu();
+                }
+            }
+// début du combat
             if (FighterC1.speed == FighterC2.speed){
                 System.out.println("Both Fighters have equal speed");
                 System.out.println("Tossing a coin to decide who goes first");
@@ -333,6 +361,7 @@ public class Main {
 
             int millis = 680;
             int turnCount = 0 ;
+
             while (FighterC1.HP > 0 && FighterC2.HP > 0 && turnCount <= 20) {
                 turnCount++;
                 //int hit = FighterC1.getDamages(FighterC2.race);
@@ -475,10 +504,26 @@ public class Main {
             else if (FighterC2.HP <= 0){
                 System.out.println(FighterC1.name + " won the hustle, he clapped his opponnent's cheeks");
                 Thread.sleep(millis);
+                if (issueBet == indexOp1 + 1) {
+                    System.out.println("Congrats you won your bet");
+                }
+                else if(turnBet == turnCount){
+                    System.out.println("Congrats you won your bet");
+                }else {
+                    System.out.println("Sadly you lost your bet please give your money to Luciano :D");
+                }
             }
             else {
                 System.out.println(FighterC2.name + " won the hustle, he clapped his opponnent's cheeks");
                 Thread.sleep(millis);
+                if (issueBet == indexOp2 + 1) {
+                    System.out.println("Congrats you won your bet");
+                }
+                else if(turnBet == turnCount){
+                        System.out.println("Congrats you won your bet");
+                    }else {
+                        System.out.println("Sadly you lost your bet please give your money to Luciano :D");
+                    }
             }
             System.out.println("Press enter to return to menu");
             sc.nextLine();
