@@ -464,8 +464,15 @@ public class Main {
             if (turnCount > 20){
                 System.out.println("after " + turnCount + " tiring rounds both fighters realised the true victory" +
                         " was the friends they made along the way");
+            }else if (FighterC1.HP <= 0 && FighterC2.HP <= 0){
+                System.out.println("well it seems like both fighter are dead...\n" +
+                        " you didn't make two racists of the same race fight against each other did you ?\n" +
+                        "guess we're just returning to menu then.");
+                System.out.println("Press enter to return to menu");
+                sc.nextLine();
+                menu();
             }
-            if (FighterC2.HP <= 0){
+            else if (FighterC2.HP <= 0){
                 System.out.println(FighterC1.name + " won the hustle, he clapped his opponnent's cheeks");
                 Thread.sleep(millis);
             }
@@ -480,66 +487,7 @@ public class Main {
     }
 
 
-//    void Fight() throws CloneNotSupportedException {
-//        GestionCHR list = new GestionCHR();
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println(GestionCHR.characters);
-//        //selection combattant 1
-//        System.out.println("Choose Fighter One  : ");
-//        int indexOp1 = sc.nextInt()-1;
-//        Proletarian Fighter = list.GetCharacter(indexOp1);
-//        Proletarian FighterC1 = (Proletarian)Fighter.clone();
-//
-//        //selection combattant 2
-//        System.out.println("Choose Fighter Two : ");
-//        int indexOp2 = sc.nextInt()-1;
-//        Proletarian Fighter1 = list.GetCharacter(indexOp2);
-//        Proletarian FighterC2 = (Proletarian)Fighter1.clone();
-//
-//        while (FighterC1.HP > 0 && FighterC2.HP > 0) {
-//            //tant que les deux tiennent debout
-//            if (FighterC1.speed > FighterC2.speed) {
-//                System.out.println(FighterC1.name + " Attacks ");
-//                int hit = FighterC1.getDamages();
-//                //attaque du fighter 1
-//                System.out.println(FighterC1.name + " Deals " + hit + "points of damage");
-//                FighterC2.takeDamages(hit);
-//                //on affiche les pv restants
-//                System.out.println("Remaining Hp of " + FighterC1.name + " = " + FighterC1.HP) ;
-//                System.out.println("Remaining Hp of" + FighterC2.name + " = " + FighterC2.HP) ;
-//                // Nouvelle Bagarre
-//                System.out.println(FighterC2.name + " Attacks ");
-//                int hit2 = FighterC2.getDamages();
-//                //attaque du fighter 2
-//                System.out.println(FighterC2.name + " Deals " + hit + "points of damage");
-//                FighterC1.takeDamages(hit2);
-//                //on affiche les pv restants
-//                System.out.println("Remaining Hp of " + FighterC1.name + " = " + FighterC1.HP) ;
-//                System.out.println("Remaining Hp of" + FighterC2.name + " = " + FighterC2.HP) ;
-//                sc.next();
-//
-//            }else if(FighterC1.speed < FighterC2.speed){
-//                System.out.println(FighterC2.name + " Attacks ");
-//                int hit = FighterC2.getDamages();
-//                //attaque du fighter 1
-//                System.out.println(FighterC2.name + " Deals " + hit + "points of damage");
-//                FighterC1.takeDamages(hit);
-//                //on affiche les pv restants
-//                System.out.println("Remaining Hp of " + FighterC1.name + " = " + FighterC1.HP) ;
-//                System.out.println("Remaining Hp of" + FighterC2.name + " = " + FighterC2.HP) ;
-//                // Nouvelle Bagarre
-//                System.out.println(FighterC1.name + " Attacks ");
-//                int hit2 = FighterC1.getDamages();
-//                //attaque du fighter 2
-//                System.out.println(FighterC1.name + " Deals " + hit + "points of damage");
-//                FighterC2.takeDamages(hit2);
-//                //on affiche les pv restants
-//                System.out.println("Remaining Hp of " + FighterC1.name + " = " + FighterC1.HP) ;
-//                System.out.println("Remaining Hp of" + FighterC2.name + " = " + FighterC2.HP) ;
-//                sc.next();
-//
-//            }
-//        }
+
 
 
 
