@@ -4,15 +4,17 @@ public class Witch extends Proletarian{
 
     private int potionsQuantity;
 
-    Witch(String name, int HP, int Strength, int speed, int potionsQuantity){
-        super(name, HP, Strength, speed);
+    Witch(String name, int HP, int Strength, int speed, int potionsQuantity, String race){
+        super(name, HP, Strength, speed, race);
+        this.potionsQuantity = potionsQuantity;
     }
 
     public void takeDamages(int Dmg){
         this.HP = this.HP - Dmg;
     }
 
-    public int getDamages() {
+    public int getDamages(String opponentRace) {
+        String nothing = opponentRace;
         int randomInt = (int) Math.random();
         if(potionsQuantity>0 && randomInt>0.7){
             potionsQuantity = potionsQuantity - 1;
@@ -25,7 +27,12 @@ public class Witch extends Proletarian{
     }
 
     public String toString(){
-        String chara = " Mage " + this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed+" Potions: "+this.potionsQuantity;
+        String chara = " Witch " + this.name+
+                "'s Stats: HP: "+this.HP+
+                " Strength: "+this.Strength+
+                " Speed: "+this.speed+
+                " Potions: "+this.potionsQuantity+
+                " Race: "+ this.race;
         return chara;
     }
 

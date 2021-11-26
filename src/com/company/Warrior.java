@@ -4,8 +4,8 @@ public class Warrior extends Proletarian{
 
     private int shieldStrength;
 
-    Warrior(String name, int HP, int Strength, int speed, int shieldStrength){
-        super(name, HP, Strength, speed);
+    Warrior(String name, int HP, int Strength, int speed, int shieldStrength, String race){
+        super(name, HP, Strength, speed, race);
         this.shieldStrength = shieldStrength;
     }
 
@@ -15,12 +15,18 @@ public class Warrior extends Proletarian{
             System.out.println();
         }
     }
-    public int getDamages(){
+    public int getDamages(String opponentRace){
+        String nothing = opponentRace;
         return this.Strength;
     }
 
     public String toString(){
-        String chara = " Warrior " + this.name+"'s Stats: HP: "+this.HP+" Strength: "+this.Strength+" Speed: "+this.speed+" Shield Strength: "+this.shieldStrength;
+        String chara = " Warrior " + this.name+
+                "'s Stats: HP: "+this.HP+
+                " Strength: "+this.Strength+
+                " Speed: "+this.speed+
+                " Shield Strength: "+this.shieldStrength+
+                " Race: "+ this.race;
         return chara;
     }
 }
